@@ -864,6 +864,9 @@ export PING_IDENTITY_DEVOPS_KEY="${PING_IDENTITY_DEVOPS_KEY:-ssm://pcpt/devops-l
 PING_CLOUD_BASE_COMMIT_SHA=$(git rev-parse HEAD)
 CURRENT_GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 echo "current git branch: ${CURRENT_GIT_BRANCH}"
+echo "ci commit ref name: ${CI_COMMIT_REF_NAME}"
+export CI_COMMIT_REF_NAME="${CI_COMMIT_REF_NAME:-HEAD}"
+echo "ci commit ref name again: ${CI_COMMIT_REF_NAME}"
 if test "${CURRENT_GIT_BRANCH}" = 'HEAD'; then
   CURRENT_GIT_BRANCH=$(git describe --tags --always)
   echo "current git branch equals HEAD: ${CURRENT_GIT_BRANCH}"
